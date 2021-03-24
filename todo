@@ -1,0 +1,10 @@
+TODO in near future:
+- Fetch texts from an API instead of hardcoded (maybe https://goquotes.docs.apiary.io/# ?)
+- Fix issue where new word creates space at beginning of textfield
+- Fix issue where wrong letter results in all red text
+- Fix logic issues, e.g. when input doesn't get counted
+
+TODO in late future:
+- Add multiplayer mode (WebSockets, Socket.io, etc.)
+- GitHub Authentication?
+- Highscore for the day?
