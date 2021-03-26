@@ -2,6 +2,7 @@
 <div id="content">
   <h1>Typeskill</h1>
   <h2>Practice your typing skills</h2>
+  <b>Please keep in mind that this is still in development!</b>
 
   <Game/>
 </div>
@@ -21,13 +22,20 @@ export default {
 </script>
 
 <style>
+b {
+  text-decoration: underline;
+}
 #app {
   font-family: Helvetica Neue, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*text-align: center;*/
-  color: #2c3e50;
   margin-top: 60px;
+}
+
+body {
+  color: #f1f1f1;
+  background-color: rgb(5, 9, 15);
 }
 
 #content {

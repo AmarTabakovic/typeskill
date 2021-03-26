@@ -19,10 +19,13 @@
   <p id="wpm">WPM: {{ speed }}</p>
 </template>
 <script>
+import { textsArray } from "../resources/texts.js";
+//import axios from 'axios';
+
 export default {
   data: function () {
     return {
-      textToType: "We come from two different worlds but there's only one love that could make things easier..",
+      textToType: textsArray[Math.floor(Math.random() * textsArray.length)],
       typedArray: [],
       typedInOneSecond: 0,
       positionLetter: 0,
@@ -50,6 +53,12 @@ export default {
       } 
     });
 
+    window.addEventListener("keydown", (e) => {
+      if (e.keyCode == 37 || e.keyCode == 39) {
+        e.preventDefault();
+      }
+    });
+
     window.addEventListener("keypress", (e) => {
       if(this.started == false) {
         this.interval = setInterval(() => this.calculateSpeed(), 1000);
@@ -75,16 +84,24 @@ export default {
           document.getElementById("input").value = "";
           console.log("Space");
         }
+        console.log(this.textToType);
+        console.log(this.typedArray.join(""))
+
+        if (this.textToType == this.typedArray.join("") ) {
+          this.finished = 1;
+        }
       } else {
         ("Not approved");
       }
     });
   },
+  
   /*computed: {
     splitText: function () {
       return this.textToType.split("");
     },
   },*/
+  
   methods: {
     compare: function (inp) {
       if (inp == this.textToType[this.positionLetter]) {
@@ -124,14 +141,15 @@ export default {
 }
 
 .typed {
-  color: green;
+  color: rgb(71, 207, 71);
 }
 
 .error {
-  color: red;
+  color: rgb(236, 73, 73);
 }
 
 #input {
   margin-top: 20px;
 }
+
 </style>
