@@ -9,9 +9,11 @@
       v-bind:key="s"
       v-for="(s, index) in textToType"
       v-bind:class="{
-        default: s == textToType[positionLetter -1],
+        default: s == textToType[positionLetter - 1],
         typed: s == typedArray[index],
-        error: s != typedArray[index] && typedArray[positionLetter -1] != textToType[positionLetter -1],
+        error:
+          s != typedArray[index] &&
+          typedArray[positionLetter - 1] != textToType[positionLetter - 1],
       }"
       >{{ s }}</span
     >
@@ -19,6 +21,8 @@
   <input id="input" autocomplete="off" type="text" />
   <h3 v-if="finished != true" id="wpm">Your WPM: {{ speed }}</h3>
   <h3 v-else id="wpm">Your final WPM: {{ speed }}</h3>
+  <h3 v-if="finished != true">Accuracy: {{ accuracy }}%</h3>
+  <h3 v-else>Your final accuracy: {{ accuracy }}%</h3>
 </template>
 <script>
 import { textsArray } from "../resources/texts.js";
@@ -36,6 +40,9 @@ export default {
       interval: null,
       started: false,
       finished: false,
+      correctEntries: 0,
+      allEntries: 0,
+      accuracy: 0,
     };
   },
   created() {
@@ -65,7 +72,7 @@ export default {
         this.started = true;
         this.interval = setInterval(() => this.calculateSpeed(), 1000);
       }
-
+      this.allEntries = this.allEntries + 1;
       console.log(e.key);
       var temp = this.compare(e.key);
 
@@ -76,6 +83,7 @@ export default {
           this.textToType[this.positionLetter - 2]
       ) {
         this.typedArray.push(e.key);
+        this.correctEntries = this.correctEntries + 1;
         this.typedInOneSecond += 1;
 
         if (this.textToType[this.positionLetter - 1] == " ") {
@@ -91,7 +99,7 @@ export default {
           this.finishedGame(lastSpeed);
         }
       } else {
-        ("Not approved");
+        return;
       }
     });
   },
@@ -116,6 +124,7 @@ export default {
       this.speed = wpm;
       console.log(this.speed);
       console.log(this.secondsPassed);
+      this.calculateAccuracy(this.correctEntries, this.allEntries);
       this.secondsPassed += 1;
     },
     finishedGame: function (input) {
@@ -124,17 +133,26 @@ export default {
       document.getElementById("input").disabled = true;
       clearInterval(this.interval);
     },
+    calculateAccuracy: function (correct, all) {
+      var accuracy = (correct / all) * 100;
+      accuracy = Math.round(accuracy * 10) / 10;
+      this.accuracy = accuracy;
+      console.log(accuracy);
+    },
   },
 };
 </script>
 <style scoped>
+
+
 .textToType {
   cursor: default;
   font-size: 1.2em;
 }
 
 #textWrapper {
-  width: 700px;
+  max-width: 700px;
+  margin-top: 25px;
 }
 
 .default {
@@ -156,10 +174,14 @@ export default {
   color: inherit;
   background: inherit;
   border: 1px solid black;
+  margin-bottom: 50px;
 }
 
-input:focus{
-    outline: none;
+input:focus {
+  outline: none;
 }
 
+h3 {
+  margin: 0.3em 0;
+}
 </style>
