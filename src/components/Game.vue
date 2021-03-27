@@ -9,14 +9,16 @@
       v-bind:key="s"
       v-for="(s, index) in textToType"
       v-bind:class="{
+        default: s == textToType[positionLetter -1],
         typed: s == typedArray[index],
-        error: typedArray[positionLetter - 1] != textToType[positionLetter - 1],
+        error: s != typedArray[index] && typedArray[positionLetter -1] != textToType[positionLetter -1],
       }"
       >{{ s }}</span
     >
   </div>
   <input id="input" autocomplete="off" type="text" />
-  <h3 id="wpm">Your WPM: {{ speed }}</h3>
+  <h3 v-if="finished != true" id="wpm">Your WPM: {{ speed }}</h3>
+  <h3 v-else id="wpm">Your final WPM: {{ speed }}</h3>
 </template>
 <script>
 import { textsArray } from "../resources/texts.js";
@@ -118,6 +120,8 @@ export default {
     },
     finishedGame: function (input) {
       console.log("FINISHED: " + input);
+      document.getElementById("input").value = "";
+      document.getElementById("input").disabled = true;
       clearInterval(this.interval);
     },
   },
@@ -126,7 +130,7 @@ export default {
 <style scoped>
 .textToType {
   cursor: default;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 #textWrapper {
@@ -153,4 +157,9 @@ export default {
   background: inherit;
   border: 1px solid black;
 }
+
+input:focus{
+    outline: none;
+}
+
 </style>

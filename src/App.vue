@@ -1,6 +1,6 @@
 <template>
 <div id="content">
-  <h1>Typeskill</h1>
+  <h1><a href="/">Typeskill</a></h1>
   <h2>Minimalistic typing practice site</h2>
   
 
@@ -41,5 +41,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 </style>
