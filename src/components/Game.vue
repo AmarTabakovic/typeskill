@@ -1,6 +1,6 @@
 <template>
   <h3>Type the following text into the textbox below:</h3>
-  <div id ="textWrapper">
+  <div id="textWrapper">
     <span
       class="textToType"
       unselectable="on"
@@ -16,7 +16,7 @@
     >
   </div>
   <input id="input" autocomplete="off" type="text" />
-  <p id="wpm">WPM: {{ speed }}</p>
+  <h3 id="wpm">Your WPM: {{ speed }}</h3>
 </template>
 <script>
 import { textsArray } from "../resources/texts.js";
@@ -31,13 +31,16 @@ export default {
       positionLetter: 0,
       speed: 0,
       secondsPassed: 0,
-      started: 0,
-      finished: 0
+      interval: null,
+      started: false,
+      finished: false,
     };
   },
   created() {
+    // Event listeners for keydowns
     window.addEventListener("keydown", (e) => {
-      if (e.keyCode == 8 /*|| e.keycode == 37*/) {
+      // keyCode 8 = backspace
+      if (e.keyCode == 8) {
         if (document.getElementById("input").value.length > 0) {
           if (
             this.typedArray[this.positionLetter - 1] ==
@@ -45,30 +48,24 @@ export default {
           ) {
             this.typedArray.pop();
           }
-          //
           this.positionLetter -= 1;
-        } else {
-          return "";
         }
-      } 
-    });
-
-    window.addEventListener("keydown", (e) => {
+      }
+      // keyCode 37 = left arrow
+      // keyCode 39 = right arrow
       if (e.keyCode == 37 || e.keyCode == 39) {
         e.preventDefault();
       }
     });
-
+    // Event listeners for keypresses
     window.addEventListener("keypress", (e) => {
-      if(this.started == false) {
-        this.interval = setInterval(() => this.calculateSpeed(), 1000);
+      if (this.started == false) {
         this.started = true;
+        this.interval = setInterval(() => this.calculateSpeed(), 1000);
       }
-
 
       console.log(e.key);
       var temp = this.compare(e.key);
-      
 
       this.positionLetter += 1;
       if (
@@ -76,7 +73,6 @@ export default {
         this.typedArray[this.positionLetter - 2] ==
           this.textToType[this.positionLetter - 2]
       ) {
-        
         this.typedArray.push(e.key);
         this.typedInOneSecond += 1;
 
@@ -85,23 +81,19 @@ export default {
           console.log("Space");
         }
         console.log(this.textToType);
-        console.log(this.typedArray.join(""))
+        console.log(this.typedArray.join(""));
 
-        if (this.textToType == this.typedArray.join("") ) {
+        if (this.textToType == this.typedArray.join("")) {
           this.finished = 1;
+          const lastSpeed = this.speed;
+          this.finishedGame(lastSpeed);
         }
       } else {
         ("Not approved");
       }
     });
   },
-  
-  /*computed: {
-    splitText: function () {
-      return this.textToType.split("");
-    },
-  },*/
-  
+
   methods: {
     compare: function (inp) {
       if (inp == this.textToType[this.positionLetter]) {
@@ -115,25 +107,30 @@ export default {
       return;
     },
     calculateSpeed: function () {
-    //function run every second
-      var wpm = Math.round((this.typedInOneSecond / 5 ) / (0.0183 * this.secondsPassed));
+      //function run every second
+      var wpm = Math.round(
+        this.typedInOneSecond / 5 / (0.0183 * this.secondsPassed)
+      );
       this.speed = wpm;
-      console.log(this.speed)
-      console.log(this.secondsPassed)
-      this.secondsPassed += 1
-    //this.typedInOneSecond = 0;
+      console.log(this.speed);
+      console.log(this.secondsPassed);
+      this.secondsPassed += 1;
+    },
+    finishedGame: function (input) {
+      console.log("FINISHED: " + input);
+      clearInterval(this.interval);
+    },
   },
-  },
-  
 };
 </script>
 <style scoped>
 .textToType {
   cursor: default;
+  font-size: 1.5em;
 }
 
 #textWrapper {
-  width: 500px;
+  width: 700px;
 }
 
 .default {
@@ -141,15 +138,19 @@ export default {
 }
 
 .typed {
-  color: rgb(71, 207, 71);
+  color: rgb(0, 107, 0);
 }
 
 .error {
-  color: rgb(236, 73, 73);
+  color: rgb(228, 0, 0);
 }
 
 #input {
-  margin-top: 20px;
+  height: 25px;
+  width: 200px;
+  margin-top: 50px;
+  color: inherit;
+  background: inherit;
+  border: 1px solid black;
 }
-
 </style>

@@ -1,8 +1,8 @@
 <template>
 <div id="content">
   <h1>Typeskill</h1>
-  <h2>Practice your typing skills</h2>
-  <b>Please keep in mind that this is still in development!</b>
+  <h2>Minimalistic typing practice site</h2>
+  
 
   <Game/>
 </div>
@@ -15,7 +15,6 @@ import Game from "./components/Game.vue"
 export default {
   name: 'App',
   components: {
-    //GameWrapper
     Game
   }
 }
@@ -26,7 +25,7 @@ b {
   text-decoration: underline;
 }
 #app {
-  font-family: Helvetica Neue, Arial, sans-serif;
+  font-family: Consolas, Monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*text-align: center;*/
@@ -34,8 +33,8 @@ b {
 }
 
 body {
-  color: #f1f1f1;
-  background-color: rgb(5, 9, 15);
+  color: black;
+  background-color: rgb(245, 216, 155);
 }
 
 #content {
