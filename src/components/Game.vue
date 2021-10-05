@@ -174,6 +174,11 @@ export default {
   color: inherit;
   background: inherit;
   border: 1px solid var(--color-font);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  font-size: 1.2em;
+  font-family: inherit;
   margin-bottom: 50px;
 }
 
@@ -187,5 +192,6 @@ h3 {
 
 #retry-button {
   margin-top: 30px;
+  text-decoration: underline;
 }
 </style>
