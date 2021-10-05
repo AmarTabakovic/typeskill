@@ -30,7 +30,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @import "./css/variables.css";
 
@@ -38,7 +37,7 @@ b {
   text-decoration: underline;
 }
 #app {
-  font-family: Inter, "Courier Prime", Courier, Monospace;
+  font-family: Inter, "Helvetica Neue", Arial, Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*text-align: center;*/
