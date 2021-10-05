@@ -1,5 +1,4 @@
 <template>
-  <h3>Type the following text into the textbox below:</h3>
   <div id="textWrapper">
     <span
       class="textToType"
@@ -23,7 +22,7 @@
   <h3 v-else id="wpm">Your final WPM: {{ speed }}</h3>
   <h3 v-if="finished != true">Accuracy: {{ accuracy }}%</h3>
   <h3 v-else>Your final accuracy: {{ accuracy }}%</h3>
-  <a id="retry-button" v-if="finished == true"  href="">Try a new text</a>
+  <a id="retry-button" v-if="finished == true" href="">Try a new text</a>
 </template>
 <script>
 import { textsArray } from "../resources/texts.js";
@@ -114,8 +113,7 @@ export default {
       }
     },
     startAgain: function () {
-      // empty form, set new text, reset wpm
-      return;
+      // todo
     },
     calculateSpeed: function () {
       //function run every second
@@ -144,11 +142,12 @@ export default {
 };
 </script>
 <style scoped>
-
+@import './../css/variables.css';
 
 .textToType {
   cursor: default;
   font-size: 1.2em;
+  user-select: none;
 }
 
 #textWrapper {
@@ -157,15 +156,15 @@ export default {
 }
 
 .default {
-  color: black;
+  color: var(--color-font);
 }
 
 .typed {
-  color: rgb(0, 107, 0);
+  color: var(--color-good);
 }
 
 .error {
-  color: rgb(228, 0, 0);
+  color: var(--color-bad);
 }
 
 #input {
@@ -174,11 +173,11 @@ export default {
   margin-top: 50px;
   color: inherit;
   background: inherit;
-  border: 1px solid black;
+  border: 1px solid var(--color-font);
   margin-bottom: 50px;
 }
 
-input:focus {
+#input:focus {
   outline: none;
 }
 

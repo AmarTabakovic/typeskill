@@ -1,0 +1,17 @@
+:root {
+    --black: black;
+    --white: white;
+
+    --color-background: var(--white);
+    --color-font: var(--black);
+
+    --color-good: rgb(58, 151, 55);
+    --color-bad: rgb(252, 0, 0);
+  }
+
+.dark-theme {
+    --color-background: var(--black);
+    --color-font: var(--white);
+    --color-good: rgb(65, 187, 61);
+    --color-bad: rgb(204, 62, 62);
+}
