@@ -23,7 +23,7 @@
   <h3 v-else id="wpm">Your final WPM: {{ speed }}</h3>
   <h3 v-if="finished != true">Accuracy: {{ accuracy }}%</h3>
   <h3 v-else>Your final accuracy: {{ accuracy }}%</h3>
-  <a id="retry-button" v-if="finished == true"  href="">Retry</a>
+  <a id="retry-button" v-if="finished == true"  href="">Try a new text</a>
 </template>
 <script>
 import { textsArray } from "../resources/texts.js";
