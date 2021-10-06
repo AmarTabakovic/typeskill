@@ -10,4 +10,9 @@ export const textsArray = [
     "The big-Oh notation is used widely to characterize running times and space bounds in terms of some parameter n, which varies from problem to problem, but is usually defined as an intuitive notion of the 'size' of the problem.",
     "Java uses an automatic garbage collector to manage memory in the object lifecycle. The programmer determines when objects are created, and the Java runtime is responsible for recovering the memory once objects are no longer in use.",
     "Several flavors of the Linux kernel exist for each port. For example, the i386 port has flavors for IA-32 PCs supporting Physical Address Extension and real-time computing, for older PCs, and for x86-64 PCs.",
+    "He was not happy. He was not happy. He said the words to himself. He recognized this as the true state of affairs. He wore his happiness like a mask and the girl had run off across the lawn with the mask and there was no way of going to knock on her door and ask for it back.",
+    "Space is big. You just won't believe how vastly, hugely, mind-bogglingly big it is. I mean, you may think it's a long way down the road to the chemist's, but that's just peanuts to space.",
+    "Now I will tell you the answer to my question. It is this. The Party seeks power entirely for its own sake. We are not interested in the good of others; we are interested solely in power, pure power.",
+    "Being in a minority, even in a minority of one, did not make you mad. There was truth and there was untruth, and if you clung to the truth even against the whole world, you were not mad.",
+    "Although Olten only has 18,000 inhabitants, the station is used each day by about 80,000 passengers and is one of the 10 busiest in Switzerland, busier than even Geneva. It serves 1,100 trains a day, making it one of the busiest in Switzerland.",
 ];

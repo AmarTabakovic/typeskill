@@ -18,9 +18,9 @@
     >
   </div>
   <input id="input" autocomplete="off" type="text" />
-  <h3 v-if="finished != true" id="wpm">Your WPM: {{ speed }}</h3>
+  <h3 v-if="finished != true" id="wpm">{{ speed }} WPM</h3>
   <h3 v-else id="wpm">Your final WPM: {{ speed }}</h3>
-  <h3 v-if="finished != true">Accuracy: {{ accuracy }}%</h3>
+  <h3 v-if="finished != true">{{ accuracy }}% accuracy</h3>
   <h3 v-else>Your final accuracy: {{ accuracy }}%</h3>
   <a id="retry-button" v-if="finished == true" href="">Try a new text</a>
 </template>
@@ -148,6 +148,7 @@ export default {
   cursor: default;
   font-size: 1.2em;
   user-select: none;
+  transition: color 0.1s !important;
 }
 
 #textWrapper {
@@ -193,5 +194,6 @@ h3 {
 #retry-button {
   margin-top: 30px;
   text-decoration: underline;
+  font-size: 1.2em;
 }
 </style>
