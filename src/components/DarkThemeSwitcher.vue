@@ -9,7 +9,6 @@ export default {
   data: function() {
       return {
           currentMode: 'light',
-
       }
   },
   mounted: function() {
@@ -47,6 +46,7 @@ export default {
 
     p {
         user-select: none;
+        font-size: 20pt;
     }
 
     p:focus {
