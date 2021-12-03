@@ -1,9 +1,7 @@
 <template>
   <div>
-    <!--<p v-if="currentMode == 'light'" @click="toggle">🌙</p>-->
     <font-awesome-icon v-if="currentMode == 'light'" @click="toggle" icon="toggle-off" />
     <font-awesome-icon v-else @click="toggle" icon="toggle-on" />
-   <!-- <p v-else @click="toggle">☀️</p>-->
   </div>
 </template>
 <script>
