@@ -1,7 +1,9 @@
 <template>
   <div>
-    <p v-if="currentMode == 'light'" @click="toggle">🌙</p>
-    <p v-else @click="toggle">☀️</p>
+    <!--<p v-if="currentMode == 'light'" @click="toggle">🌙</p>-->
+    <font-awesome-icon v-if="currentMode == 'light'" @click="toggle" icon="toggle-off" />
+    <font-awesome-icon v-else @click="toggle" icon="toggle-on" />
+   <!-- <p v-else @click="toggle">☀️</p>-->
   </div>
 </template>
 <script>
@@ -40,16 +42,16 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-    p:hover {
+    svg:hover {
         cursor: pointer;
     }
 
-    p {
+    svg {
         user-select: none;
         font-size: 20pt;
     }
 
-    p:focus {
+    svg:focus {
   outline: none;
 }
 </style>
