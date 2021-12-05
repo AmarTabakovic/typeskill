@@ -73,7 +73,7 @@ export default {
         this.interval = setInterval(() => this.calculateSpeed(), 1000);
       }
       this.allEntries = this.allEntries + 1;
-      console.log(e.key);
+      //console.log(e.key);
       var temp = this.compare(e.key);
 
       this.positionLetter += 1;
@@ -87,11 +87,13 @@ export default {
         this.typedInOneSecond += 1;
 
         if (this.textToType[this.positionLetter - 1] == " ") {
-          document.getElementById("input").value = "";
-          console.log("Space");
+          //console.log("Space");
+          setTimeout(function(){
+              document.getElementById("input").value = "";
+          }, 20);
         }
-        console.log(this.textToType);
-        console.log(this.typedArray.join(""));
+        //console.log(this.textToType);
+        //console.log(this.typedArray.join(""));
 
         if (this.textToType == this.typedArray.join("")) {
           this.finished = 1;
@@ -121,13 +123,13 @@ export default {
         this.typedInOneSecond / 5 / (0.0183 * this.secondsPassed)
       );
       this.speed = wpm;
-      console.log(this.speed);
-      console.log(this.secondsPassed);
+      //console.log(this.speed);
+      //console.log(this.secondsPassed);
       this.calculateAccuracy(this.correctEntries, this.allEntries);
       this.secondsPassed += 1;
     },
-    finishedGame: function (input) {
-      console.log("FINISHED: " + input);
+    finishedGame: function () {
+      //console.log("FINISHED: " + input);
       document.getElementById("input").value = "";
       document.getElementById("input").disabled = true;
       clearInterval(this.interval);
@@ -136,7 +138,7 @@ export default {
       var accuracy = (correct / all) * 100;
       accuracy = Math.round(accuracy * 10) / 10;
       this.accuracy = accuracy;
-      console.log(accuracy);
+      //console.log(accuracy);
     },
   },
 };
