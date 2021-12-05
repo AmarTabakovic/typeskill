@@ -57,43 +57,41 @@ export default {
           ) {
             this.typedArray.pop();
           }
-          this.positionLetter -= 1;
+          this.positionLetter--;
         }
       }
       // keyCode 37 = left arrow
       // keyCode 39 = right arrow
-      if (e.keyCode == 37 || e.keyCode == 39) {
+      if (e.keyCode == 37 || e.keyCode == 39 || e.which == "Dead") {
         e.preventDefault();
       }
     });
+
     // Event listeners for keypresses
     window.addEventListener("keypress", (e) => {
       if (this.started == false) {
         this.started = true;
         this.interval = setInterval(() => this.calculateSpeed(), 1000);
       }
-      this.allEntries = this.allEntries + 1;
-      //console.log(e.key);
-      var temp = this.compare(e.key);
 
-      this.positionLetter += 1;
+      this.allEntries++;
+      var temp = this.compare(e.key);
+      this.positionLetter++;
+
       if (
         temp == true &&
         this.typedArray[this.positionLetter - 2] ==
           this.textToType[this.positionLetter - 2]
       ) {
         this.typedArray.push(e.key);
-        this.correctEntries = this.correctEntries + 1;
-        this.typedInOneSecond += 1;
+        this.correctEntries++;
+        this.typedInOneSecond++;
 
         if (this.textToType[this.positionLetter - 1] == " ") {
-          //console.log("Space");
-          setTimeout(function(){
-              document.getElementById("input").value = "";
+          setTimeout(function () {
+            document.getElementById("input").value = "";
           }, 20);
         }
-        //console.log(this.textToType);
-        //console.log(this.typedArray.join(""));
 
         if (this.textToType == this.typedArray.join("")) {
           this.finished = 1;
@@ -114,22 +112,16 @@ export default {
         return false;
       }
     },
-    startAgain: function () {
-      // todo
-    },
     calculateSpeed: function () {
-      //function run every second
+      //function to be run every second
       var wpm = Math.round(
         this.typedInOneSecond / 5 / (0.0183 * this.secondsPassed)
       );
       this.speed = wpm;
-      //console.log(this.speed);
-      //console.log(this.secondsPassed);
       this.calculateAccuracy(this.correctEntries, this.allEntries);
-      this.secondsPassed += 1;
+      this.secondsPassed++;
     },
     finishedGame: function () {
-      //console.log("FINISHED: " + input);
       document.getElementById("input").value = "";
       document.getElementById("input").disabled = true;
       clearInterval(this.interval);
@@ -138,13 +130,12 @@ export default {
       var accuracy = (correct / all) * 100;
       accuracy = Math.round(accuracy * 10) / 10;
       this.accuracy = accuracy;
-      //console.log(accuracy);
     },
   },
 };
 </script>
 <style scoped>
-@import './../css/variables.css';
+@import "./../css/variables.css";
 
 .textToType {
   cursor: default;
