@@ -15,4 +15,6 @@ export const textsArray = [
     "Now I will tell you the answer to my question. It is this. The Party seeks power entirely for its own sake. We are not interested in the good of others; we are interested solely in power, pure power.",
     "Being in a minority, even in a minority of one, did not make you mad. There was truth and there was untruth, and if you clung to the truth even against the whole world, you were not mad.",
     "Although Olten only has 18,000 inhabitants, the station is used each day by about 80,000 passengers and is one of the 10 busiest in Switzerland, busier than even Geneva. It serves 1,100 trains a day, making it one of the busiest in Switzerland.",
+    "I'll have 2 number nines, a number nine large. A number six with extra dip. A number seven. Two number forty-fives, one with cheese, and a large soda.",
+    "The path of the righteous man is beset of all sides by the iniquities of the selfish and the tyranny of evil me. Blessed is he who, in the name of the charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know my name is the Lord when I lay my vengeance upon thee."
 ];
