@@ -76,4 +76,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+h1 {
+  font-size: 27pt;
+}
 </style>
